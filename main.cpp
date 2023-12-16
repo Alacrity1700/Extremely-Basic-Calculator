@@ -26,16 +26,25 @@ void calcAnswer(int Operator, float firstVal, float secVal, float& finalVal) {
 int main() {
     SetConsoleTitle(L"Ivan's Calculator");
 
-    float firstVal{ inputValue() };
-    std::cout << "\nChoose one(1,2,3,4):\n1. Multiply\n2. Divide\n3. Add\n4. Subtract\n" << std::endl;
+    bool exitProgram = false;
+    float finalVal;
 
-    int Operator{};
-    std::cin >> Operator;
-    float secVal{ inputValue() };
+    do {
+        float firstVal = inputValue();
+        std::cout << "\nChoose one (1,2,3,4):\n1. Multiply\n2. Divide\n3. Add\n4. Subtract\n" << std::endl;
+        int Operator;
+        std::cin >> Operator;
+        float secVal = inputValue();
 
-    float finalVal{};
-    calcAnswer(Operator, firstVal, secVal, finalVal);
-    std::cout << "Solution: " << finalVal << std::endl;
+        
+        calcAnswer(Operator, firstVal, secVal, finalVal);
+        std::cout << "Solution: " << finalVal << std::endl;
+
+      
+        std::cout << "Do you want to perform another calculation? (1 for Yes, 0 for No): ";
+        std::cin >> exitProgram;
+
+    } while (exitProgram);
 
     return 0;
 }
